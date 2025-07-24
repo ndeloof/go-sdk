@@ -14,7 +14,7 @@ import (
 // It returns the exit status of the executed command, an [io.Reader] containing the combined
 // stdout and stderr, and any encountered error. Note that reading directly from the [io.Reader]
 // may result in unexpected bytes due to custom stream multiplexing headers.
-// Use [cexec.Multiplexed] option to read the combined output without the multiplexing headers.
+// Use [exec.Multiplexed] option to read the combined output without the multiplexing headers.
 // Alternatively, to separate the stdout and stderr from [io.Reader] and interpret these headers properly,
 // [github.com/docker/docker/pkg/stdcopy.StdCopy] from the Docker API should be used.
 func (c *Container) Exec(ctx context.Context, cmd []string, options ...exec.ProcessOption) (int, io.Reader, error) {

@@ -80,6 +80,9 @@ type Definition struct {
 
 	// started whether to auto-start the container.
 	started bool
+
+	// attachStdout whether to attach to container stdout
+	attachStdout bool
 }
 
 // validate validates the definition.

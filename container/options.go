@@ -100,6 +100,14 @@ func WithNoStart() CustomizeDefinitionOption {
 	}
 }
 
+// WithAttachStdout will create container with stdout attached.
+func WithAttachStdout() CustomizeDefinitionOption {
+	return func(def *Definition) error {
+		def.attachStdout = false
+		return nil
+	}
+}
+
 // WithImage sets the image for a container
 func WithImage(image string) CustomizeDefinitionOption {
 	return func(def *Definition) error {

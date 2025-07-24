@@ -103,11 +103,12 @@ func Run(ctx context.Context, opts ...ContainerCustomizer) (*Container, error) {
 	client.AddSDKLabels(def.labels)
 
 	dockerInput := &container.Config{
-		Entrypoint: def.entrypoint,
-		Image:      def.image,
-		Env:        env,
-		Labels:     def.labels,
-		Cmd:        def.cmd,
+		Entrypoint:   def.entrypoint,
+		Image:        def.image,
+		Env:          env,
+		Labels:       def.labels,
+		Cmd:          def.cmd,
+		AttachStdout: def.attachStdout,
 	}
 
 	hostConfig := &container.HostConfig{}

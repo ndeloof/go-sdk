@@ -24,6 +24,16 @@ func (c *Client) ContainerCreate(ctx context.Context, config *container.Config, 
 	return dockerClient.ContainerCreate(ctx, config, hostConfig, networkingConfig, platform, name)
 }
 
+// ContainerAttach attach to container streams
+func (c *Client) ContainerAttach(ctx context.Context, id string, config container.AttachOptions) (types.HijackedResponse, error) {
+	dockerClient, err := c.Client()
+	if err != nil {
+		return types.HijackedResponse{}, fmt.Errorf("docker client: %w", err)
+	}
+
+	return dockerClient.ContainerAttach(ctx, id, config)
+}
+
 // ContainerExecStart starts a new exec instance.
 func (c *Client) ContainerExecAttach(ctx context.Context, execID string, config container.ExecAttachOptions) (types.HijackedResponse, error) {
 	dockerClient, err := c.Client()
